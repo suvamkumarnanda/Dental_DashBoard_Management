@@ -1,5 +1,6 @@
 
 
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -18,6 +19,9 @@ If you are developing a production application, we recommend using TypeScript wi
 =======
 # Dentaphere-Dental Center Management APP
 >>>>>>> d523e57a8a7728ec04972d39af428e777923be67
+=======
+# Dentaphere-Dental Center Management APP
+>>>>>>> 19de3f3da1d7bb5cb1cd8891b2986edb68521c7f
 
 Dentasphere is a Dental ceneter Management app that focuses on streamlining various aspects of a dental practice, including appointment scheduling, patient recordsand billing. 
 It Provides various services like tooth implant,tooth whitening.
@@ -25,12 +29,17 @@ It Provides various services like tooth implant,tooth whitening.
 
 ## Features:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - Admin Login ,Admin Dashboard
 - Patient login, Patient Dashboard
 =======
 - Admin Login 
 - Patient login
 >>>>>>> d523e57a8a7728ec04972d39af428e777923be67
+=======
+- Admin Login 
+- Patient login
+>>>>>>> 19de3f3da1d7bb5cb1cd8891b2986edb68521c7f
 - Patient Can book Appointment
 - Admin Can manage Upcoming Appointment
 - Patient can see their Upcoming Appointments
@@ -57,6 +66,9 @@ React (functional components)
 - https://github.com/suvamkumarnanda/dental-center-management.
 ## Project deployed link
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3c0095c15d1962c83db9bbe86fa17b494ef32b1c
 =======
 >>>>>>> d523e57a8a7728ec04972d39af428e777923be67
+=======
+>>>>>>> 19de3f3da1d7bb5cb1cd8891b2986edb68521c7f
