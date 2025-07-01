@@ -6,8 +6,8 @@ It Provides various services like tooth implant,tooth whitening.
 
 
 ## Features:
-- Admin Login 
-- Patient login
+- Admin Login ,Admin Dashboard
+- Patient login, Patient Dashboard
 - Patient Can book Appointment
 - Admin Can manage Upcoming Appointment
 - Patient can see their Upcoming Appointments
