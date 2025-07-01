@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import teeth from '../assets/teeth.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +60,7 @@ const Header = () => {
        
         <div className="flex items-center">
           <img
-            src="./src/assets/teeth.png" // Adjust path as needed
+            src={teeth} // Adjust path as needed
             alt="Dental Checkup"
             className="w-12 h-10 mr-2"
           />
