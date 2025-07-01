@@ -1,5 +1,0 @@
-{
-  "rootDirectory": "dental-dashboard",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist"
-}
