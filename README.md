@@ -1,5 +1,5 @@
 
-# Dentaphere-Dental Center Management APP
+# Dentasphere-Dental Center Management APP
 
 Dentasphere is a Dental ceneter Management app that focuses on streamlining various aspects of a dental practice, including appointment scheduling, patient recordsand billing. 
 It Provides various services like tooth implant,tooth whitening.
