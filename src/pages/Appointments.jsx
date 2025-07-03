@@ -5,7 +5,7 @@ const Appointments = () => {
   const { appointments } = useContext(AppointmentsContext);
 
   if (appointments.length === 0) {
-    return <p className="text-center text-gray-600">No appointments booked yet.</p>;
+    return <p className="text-center text-gray-600"> No appointments booked yet.</p>;
   }
 
   return (

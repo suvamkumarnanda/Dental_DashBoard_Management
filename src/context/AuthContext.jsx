@@ -5,20 +5,20 @@ export const AuthContext = createContext();
 export const AuthProvider=({ children }) =>{
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage on mount
+  // Load user details from localStorage 
   useEffect(() => {
     try {
-      const storedUser = localStorage.getItem('loggedInUser');
+      const storedUser = localStorage.getItem('signedInUser');
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       }
     } catch (error) {
       console.error('Failed to parse stored user', error);
-      localStorage.removeItem('loggedInUser'); 
+      localStorage.removeItem('signedInUser'); 
     }
   }, []);
 
-  // Login function expects a user object with role and other info
+ 
   const login = (userData) => {
     if (!userData || !userData.role) {
       console.warn('login called without valid userData or role');

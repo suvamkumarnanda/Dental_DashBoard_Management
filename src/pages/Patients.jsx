@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Patients = () => {
-  // Load patients from localStorage or start with empty array
+  // Load patients from localStorage 
   const [patients, setPatients] = useState(() => {
     const stored = localStorage.getItem('patients');
     return stored ? JSON.parse(stored) : [];
@@ -14,7 +14,7 @@ const Patients = () => {
   const [phone, setPhone] = useState('');
   const [healthInfo, setHealthInfo] = useState('');
 
-  // Track if editing and which patient is being edited
+  //stores the details of edited patient
   const [editingPatientId, setEditingPatientId] = useState(null);
 
   // Save patients to localStorage whenever patients state changes
@@ -127,7 +127,7 @@ const Patients = () => {
           />
         </div>
 
-        {/* Date of Birth */}
+        {/* DOB*/}
         <div className="mb-4">
           <label className="block mb-1 font-medium" htmlFor="dob">
             Date of Birth <span className="text-red-500">*</span>
@@ -158,7 +158,7 @@ const Patients = () => {
           />
         </div>
 
-        {/* Phone */}
+        
         <div className="mb-4">
           <label className="block mb-1 font-medium" htmlFor="phone">
             Phone
@@ -173,7 +173,7 @@ const Patients = () => {
           />
         </div>
 
-        {/* Health Info */}
+        {/* Health Informations */}
         <div className="mb-4">
           <label className="block mb-1 font-medium" htmlFor="healthInfo">
             Health Info

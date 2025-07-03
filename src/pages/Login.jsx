@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const hardcodedUsers = [
   {
     email: 'admin@entnt.in',
-    password: 'Admin@123', // Must match your password pattern
+    password: 'Admin@123', 
     name: 'Admin User',
     role: 'admin',
   },
@@ -108,7 +108,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      // Find matching user
+      // Find matched user
       const foundUser = hardcodedUsers.find(
         (u) =>
           u.email === formData.email &&
@@ -122,13 +122,13 @@ const Login = () => {
         return;
       }
 
-      // Call login with user object (excluding password for security)
+      // Call login with user object 
       await login({
         name: foundUser.name,
         email: foundUser.email,
         role: foundUser.role,
       });
-      // Navigation handled by useEffect
+      // navigation handled by useEffect
     } catch (error) {
       setLoginError(error.message || 'Login failed. Please try again.');
     } finally {
@@ -157,7 +157,7 @@ const Login = () => {
           )}
 
           <form onSubmit={handleSubmit} noValidate>
-            {/* Email */}
+            
             <div className="mb-4">
               <label htmlFor="email" className="block mb-1 font-medium">
                 Email Address
@@ -182,7 +182,7 @@ const Login = () => {
                 </p>
               )}
             </div>
-            {/* Password */}
+           
             <div className="mb-4 relative">
               <label htmlFor="password" className="block mb-1 font-medium">
                 Password

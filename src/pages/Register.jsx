@@ -13,7 +13,7 @@ const Register=() =>{
 
   const [errors, setErrors] = useState({});
 
-  // Password pattern: Minimum 8 chars, at least one uppercase, one lowercase, one number, one special char
+  // Password validation pattern
   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const validate = () => {
@@ -132,7 +132,7 @@ const Register=() =>{
           Already have an account?{' '}
           <button
             onClick={() => navigate('/login')}
-            className="text-blue-700 hover:underline focus:outline-none"
+            className="text-blue-800 hover:underline focus:outline-none"
           >
             Login here
           </button>

@@ -1,4 +1,4 @@
-// src/context/PatientsContext.jsx
+
 import React, { createContext, useState } from 'react';
 
 export const PatientsContext = createContext();

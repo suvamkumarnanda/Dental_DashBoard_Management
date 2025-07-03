@@ -9,9 +9,9 @@ import Register from "./pages/Register";
 
 import PatientDashboard from "./pages/PatientDashboard";
 import AdminRoute from "./components/AdminRoute";
-// import AdminIncidents from "./AdminIncidents";
+
 import AppointmentsProvider from "./context/AppointmentsContext";
-// import AdminCalendar from "./components/AdminCalendar";
+
 const App=()=>{
 return (
     <>
@@ -22,10 +22,9 @@ return (
         <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login/>}/>
              <Route path="/register" element={<Register />} />
-             {/* <Route path="/login/admin" element={<AdminLogin />} />
-            <Route path="/login/patient" element={<PatientLogin />} /> */}
+            
             <Route path="/patient-dashboard" element={<PatientDashboard />} />
-            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+            
 
             <Route
           path="/dashboard"
@@ -51,14 +50,7 @@ return (
             </PrivateRoute>
           }
         />
-        {/* <Route
-  path="/admin/incidents"
-  element={
-    <AdminRoute>
-      <AdminIncidents />
-    </AdminRoute>
-  }
-></Route> */}
+       
 
         <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

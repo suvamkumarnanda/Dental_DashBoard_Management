@@ -7,12 +7,12 @@ const  PrivateRoute=({ children, roles }) => {
   const location = useLocation();
 
   if (!user) {
-    // Redirect to login and save current location for redirect after login
+    // Redirect to login 
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   if (roles && !roles.includes(user.role)) {
-    // Redirect unauthorized users to a safe page (e.g., home)
+    // unauthorized users to home page
     return <Navigate to="/" replace />;
   }
 

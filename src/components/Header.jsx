@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import teeth from '../assets/teeth.png'; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logout } = useContext(AuthContext); // user now has a 'role' property
+  const { user, logout } = useContext(AuthContext); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -12,25 +13,25 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  // Navigate to login page on clicking Login button
-  const handleLoginClick = () => {
+ 
+  const handleLogin = () => {
     closeMenus();
     navigate('/login');
   };
 
-  // Scroll or navigate to landing page sections
-  const handleSectionClick = (sectionId) => {
+  //  navigate to landing page 
+  const handleSection = (Id) => {
     closeMenus();
     if (location.pathname !== '/') {
-      navigate(`/#${sectionId}`);
+      navigate(`/#${Id}`);
     } else {
-      const el = document.getElementById(sectionId);
+      const el = document.getElementById(Id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  // Contact link logic: scroll if on landing page, else navigate to /contact
-  const handleContactClick = () => {
+  // Contact link logic
+  const handleContact = () => {
     closeMenus();
     if (location.pathname === '/') {
       const el = document.getElementById('contact');
@@ -40,16 +41,16 @@ const Header = () => {
     }
   };
 
-  // New handler for dynamic Dashboard navigation
-  const handleDashboardClick = () => {
+
+  const handleDashboard = () => {
     closeMenus();
     if (user && user.role === 'admin') {
       navigate('/dashboard'); // Navigate to admin dashboard
     } else if (user && user.role === 'patient') {
       navigate('/patient-dashboard'); // Navigate to patient dashboard
     } else {
-      // Optional: Navigate to a default dashboard or login if no role/not logged in
-      navigate('/login'); // Or a generic dashboard page
+     
+      navigate('/login'); 
     }
   };
 
@@ -59,7 +60,7 @@ const Header = () => {
        
         <div className="flex items-center">
           <img
-            src="./src/assets/teeth.png" // Adjust path as needed
+            src={teeth} 
             alt="Dental Checkup"
             className="w-12 h-10 mr-2"
           />
@@ -109,14 +110,14 @@ const Header = () => {
           </NavLink>
 
           <button
-            onClick={() => handleSectionClick('services')}
+            onClick={() => handleSection('services')}
             className="block px-4 py-2 hover:text-blue-300 cursor-pointer bg-transparent border-none"
           >
             Services
           </button>
 
           <button
-            onClick={handleContactClick}
+            onClick={handleContact}
             className="block px-4 py-2 hover:text-blue-300 cursor-pointer bg-transparent border-none"
           >
             Contact
@@ -125,7 +126,7 @@ const Header = () => {
 
           {user ? ( 
             <button
-              onClick={handleDashboardClick}
+              onClick={handleDashboard}
               className={`block px-4 py-2 hover:text-blue-300 bg-transparent border-none cursor-pointer ${
                 // Add active style if current path is a dashboard route
                 (location.pathname === '/dashboard' || location.pathname === '/patient-dashboard')
@@ -135,9 +136,9 @@ const Header = () => {
               Dashboard
             </button>
           ) : (
-            // If not logged in, Dashboard navigates to login
+           
              <button
-              onClick={handleLoginClick} // redirects to login page
+              onClick={handleLogin} // redirects to login page
               className={`block px-4 py-2 hover:text-blue-300 bg-transparent border-none cursor-pointer ${
                 location.pathname === '/dashboard' ? 'font-semibold underline' : ''
               }`}
@@ -146,7 +147,7 @@ const Header = () => {
             </button>
           )}
 
-          {/* Show Patients link only if user is an admin */}
+          
           {user && user.role === 'admin' && (
             <NavLink
               to="/patients"
@@ -159,7 +160,7 @@ const Header = () => {
             </NavLink>
           )}
 
-          {/* Show Register link only if user is NOT logged in */}
+         
           {!user && (
             <NavLink
               to="/register"
@@ -176,7 +177,7 @@ const Header = () => {
           {/* Login button or user info */}
           {user ? (
             <>
-              <span className="block px-4 py-2">Hello, {user?.name ||user?.email?.split('@')[0].replace(/\d+/g, '')|| 'User'}</span>
+              <span className="block px-4 py-2">Hello, {user?.name }</span>
               <button
                 onClick={() => {
                   logout();
@@ -189,7 +190,7 @@ const Header = () => {
             </>
           ) : (
             <button
-              onClick={handleLoginClick}
+              onClick={handleLogin}
               className="block px-4 py-2 hover:text-blue-300 bg-transparent border-none cursor-pointer"
             >
               Login

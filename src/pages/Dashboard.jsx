@@ -21,15 +21,15 @@ const Dashboard = () => {
     files: [],
   });
 
-  // Calendar state
+  
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // Date boundaries for today
+  //  boundaries for same day
   const today = new Date();
   const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const todayEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 
-  // Upcoming & today's appointments (exclude completed/cancelled)
+  // Upcoming & today's appointments 
   const filteredAppointments = appointments.filter(appt => {
     const apptDate = new Date(appt.appointmentDateTime);
     return (
@@ -39,12 +39,12 @@ const Dashboard = () => {
     );
   }).sort((a, b) => new Date(a.appointmentDateTime) - new Date(b.appointmentDateTime));
 
-  // All completed appointments (no grouping)
+  // All completed appointments
   const completedAppointments = appointments
     .filter(appt => appt.status === 'Completed')
     .sort((a, b) => new Date(b.appointmentDateTime) - new Date(a.appointmentDateTime));
 
-  // Formatter for INR currency
+  //get the price in INR format
   const formatINR = (amount) => {
     if (amount === undefined || amount === null || isNaN(amount)) return '-';
     return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
@@ -86,7 +86,7 @@ const Dashboard = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle file uploads
+  // Handling  file uploads
   const handleFileChange = (e) => {
     const newFiles = Array.from(e.target.files).map(file => ({
       id: Date.now() + Math.random(),
@@ -128,7 +128,7 @@ const Dashboard = () => {
     cancelEditing();
   };
 
-  // Confirm and delete appointment (works for both upcoming and completed)
+  // Confirm and delete appointment 
   const confirmDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       deleteAppointment(id);
@@ -147,9 +147,9 @@ const Dashboard = () => {
     return 'User';
   };
 
-  // ---- Calendar Feature ----
+  
 
-  // Get appointments for a specific date
+  // Get appointments of specific date
   const getAppointmentsByDate = (date) => {
     if (!date) return [];
     const yyyy = date.getFullYear();
@@ -165,7 +165,7 @@ const Dashboard = () => {
     });
   };
 
-  // Highlight dates with appointments
+  // mark dates with appointments
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       const hasAppt = appointments.some(appt => {
@@ -180,7 +180,7 @@ const Dashboard = () => {
     }
   };
 
-  // ---- End Calendar Feature ----
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -189,7 +189,7 @@ const Dashboard = () => {
         
       </header>
 
-      {/* ---- Calendar Section ---- */}
+    
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Appointments Calendar</h2>
         <div className="flex flex-col md:flex-row gap-8">
@@ -226,9 +226,9 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      {/* ---- End Calendar Section ---- */}
+      
 
-      {/* Completed Patients Section */}
+      {/* Treatment completed Patients Section */}
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-2">Patients Completed Treatment</h2>
         <p className="text-lg font-bold text-green-700 mb-4">{completedAppointments.length}</p>
@@ -255,7 +255,7 @@ const Dashboard = () => {
                     {editingId === appt.id ? (
                       <td colSpan="8" className="p-4">
                         <form onSubmit={saveEdit} className="space-y-3">
-                          {/* Form inputs same as before */}
+                          {/* Form inputs with same credentials as before */}
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <input
                               type="text"
@@ -419,7 +419,7 @@ const Dashboard = () => {
         )}
       </section>
 
-      {/* Upcoming & Today's Appointments */}
+      {/*  Today's & Upcoming  Appointments */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Upcoming & Today's Appointments</h2>
         {filteredAppointments.length === 0 ? (

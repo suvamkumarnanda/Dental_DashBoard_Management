@@ -29,6 +29,7 @@ const AppointmentsProvider = ({ children }) => {
   // Delete appointment by id
   const deleteAppointment = (id) => {
     setAppointments((prev) => prev.filter((appt) => appt.id !== id));
+    console.log("appointment deleted");
   };
 
   return (

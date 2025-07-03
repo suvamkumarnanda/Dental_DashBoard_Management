@@ -8,7 +8,8 @@ import { AppointmentsContext } from '../context/AppointmentsContext';
 const LandingPage = () => {
   const { addAppointment } = useContext(AppointmentsContext);
 
-  const [formData, setFormData] = useState({
+  const [formDetails, setformDetails
+  ] = useState({
     fullName: '',
     email: '',
     phone: '',
@@ -17,17 +18,21 @@ const LandingPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setformDetails(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
-      !formData.fullName.trim() ||
-      !formData.email.trim() ||
-      !formData.phone.trim() ||
-      !formData.appointmentDateTime
+      !formDetails
+.fullName.trim() ||
+      !formDetails
+.email.trim() ||
+      !formDetails
+.phone.trim() ||
+      !formDetails
+.appointmentDateTime
     ) {
       alert('Please fill all fields including appointment date and time.');
       return;
@@ -35,16 +40,20 @@ const LandingPage = () => {
 
     addAppointment({
       id: Date.now(),
-      fullName: formData.fullName.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      appointmentDateTime: formData.appointmentDateTime,
+      fullName: formDetails
+.fullName.trim(),
+      email: formDetails
+.email.trim(),
+      phone: formDetails
+.phone.trim(),
+      appointmentDateTime: formDetails
+.appointmentDateTime,
       bookedAt: new Date().toISOString(),
     });
 
     alert('Appointment booked successfully!');
 
-    setFormData({
+    setFormDetails({
       fullName: '',
       email: '',
       phone: '',
@@ -55,7 +64,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
 
-      {/* Hero Section */}
+      
       <section className="bg-aqua-50 flex flex-col md:flex-row items-center justify-between px-6 py-20 container mx-auto">
         <div className="max-w-xl mb-10 md:mb-0">
           <h2 className="text-4xl font-extrabold text-black-900 mb-4">
@@ -68,25 +77,25 @@ const LandingPage = () => {
             href="#contact"
             className="inline-block bg-pink-700 text-white px-6 py-3 rounded shadow hover:bg-pink-800 transition"
           >
-            Make an Appointment
+            Make  Appointment
           </a>
         </div>
         <div>
           <img
             src={patient}
             alt="Smiling patient"
-            className="rounded-lg shadow-lg max-w-full h-auto"
+            className="rounded-lg  max-w-full shadow-lg h-auto"
           />
         </div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <h3 className="text-3xl  text-black-800 mb-12 font-semibold text-center">
+        <div className="container  px-6 mx-auto">
+          <h3 className="text-3xl   mb-12 font-semibold  text-black-800 text-center">
             Our Services
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid  md:grid-cols-3  grid-cols-1 gap-10">
             <div className="text-center p-6 border rounded shadow hover:shadow-lg transition">
               <img
                 src={checkupImg}
@@ -113,9 +122,9 @@ const LandingPage = () => {
               <img
                 src={implantImg}
                 alt="Dental Implants"
-                className="mx-auto mb-4 h-25 w-50"
+                className="mx-auto  h-25  mb-4 w-50"
               />
-              <h4 className="text-xl font-semibold mb-2">Dental Implants</h4>
+              <h4 className="text-xl f mb-2 ont-semibold">Dental Implants</h4>
               <p className="text-gray-600">
                 Regain your complete smile and confidence with our durable, natural-looking dental implants designed to seamlessly replace missing teeth
               </p>
@@ -167,7 +176,8 @@ With intuitive tools for scheduling, treatment tracking, and team collaboration,
               name="fullName"
               placeholder="Full Name"
               className="w-full px-4 py-3 rounded text-gray-900"
-              value={formData.fullName}
+              value={formDetails
+        .fullName}
               onChange={handleChange}
               required
             />
@@ -176,7 +186,8 @@ With intuitive tools for scheduling, treatment tracking, and team collaboration,
               name="email"
               placeholder="Email Address"
               className="w-full px-4 py-3 rounded text-gray-900"
-              value={formData.email}
+              value={formDetails
+        .email}
               onChange={handleChange}
               required
             />
@@ -185,7 +196,8 @@ With intuitive tools for scheduling, treatment tracking, and team collaboration,
               name="phone"
               placeholder="Phone Number"
               className="w-full px-4 py-3 rounded text-gray-900"
-              value={formData.phone}
+              value={formDetails
+        .phone}
               onChange={handleChange}
               required
             />
@@ -197,7 +209,8 @@ With intuitive tools for scheduling, treatment tracking, and team collaboration,
               id="appointmentDateTime"
               name="appointmentDateTime"
               className="w-full px-4 py-3 rounded text-gray-900"
-              value={formData.appointmentDateTime}
+              value={formDetails
+        .appointmentDateTime}
               onChange={handleChange}
               required
             />

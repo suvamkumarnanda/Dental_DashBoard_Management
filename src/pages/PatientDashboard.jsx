@@ -86,7 +86,7 @@ const PatientDashboard = () => {
         </button>
       </nav>
 
-      {/* Content */}
+     
       <section>
         {activeSection === 'appointments' && (
           <div>
