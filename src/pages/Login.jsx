@@ -17,13 +17,7 @@ const hardcodedUsers = [
     password: 'Patient@123',
     name: 'John Doe',
     role: 'patient',
-  },
-  {
-    email: 'patient2@entnt.in',
-    password: 'Patient@456',
-    name: 'Jane Smith',
-    role: 'patient',
-  },
+  }
 ];
 
 const Login = () => {

@@ -9,15 +9,15 @@ const Appointments = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 bg-white rounded shadow">
-      <h2 className="text-2xl font-semibold mb-4">Booked Appointments</h2>
+    <div className="max-w-4xl  p-4 bg-white mx-autorounded shadow">
+      <h2 className="text-2xl  mb-4 font-semibold">Booked Appointments</h2>
       <table className="min-w-full border border-gray-300 rounded">
         <thead className="bg-gray-100">
           <tr>
-            <th className="border px-4 py-2 text-left">Name</th>
-            <th className="border px-4 py-2 text-left">Email</th>
-            <th className="border px-4 py-2 text-left">Phone</th>
-            <th className="border px-4 py-2 text-left">Booked At</th>
+            <th className="border  text-left px-4 py-2">Name</th>
+            <th className="border  text-left px-4 py-2">Email</th>
+            <th className="border  text-left px-4 py-2">Phone</th>
+            <th className="border  text-left px-4 py-2">Booked At</th>
           </tr>
         </thead>
         <tbody>

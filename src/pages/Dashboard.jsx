@@ -21,15 +21,14 @@ const Dashboard = () => {
     files: [],
   });
 
-  
   const [selectedDate, setSelectedDate] = useState(null);
 
-  //  boundaries for same day
+  // Boundaries for today
   const today = new Date();
   const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const todayEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 
-  // Upcoming & today's appointments 
+  // Upcoming & today's appointments
   const filteredAppointments = appointments.filter(appt => {
     const apptDate = new Date(appt.appointmentDateTime);
     return (
@@ -44,11 +43,19 @@ const Dashboard = () => {
     .filter(appt => appt.status === 'Completed')
     .sort((a, b) => new Date(b.appointmentDateTime) - new Date(a.appointmentDateTime));
 
-  //get the price in INR format
+  // Calculate total revenue from completed appointments
+  const totalRevenue = completedAppointments.reduce((sum, appt) => {
+    const cost = parseFloat(appt.cost);
+    return sum + (isNaN(cost) ? 0 : cost);
+  }, 0);
+
+  // Format INR currency
   const formatINR = (amount) => {
     if (amount === undefined || amount === null || isNaN(amount)) return '-';
     return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
   };
+
+  const formattedRevenue = formatINR(totalRevenue);
 
   // Handlers to start editing any appointment
   const startEditing = (appt) => {
@@ -86,7 +93,7 @@ const Dashboard = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handling  file uploads
+  // Handling file uploads
   const handleFileChange = (e) => {
     const newFiles = Array.from(e.target.files).map(file => ({
       id: Date.now() + Math.random(),
@@ -132,7 +139,7 @@ const Dashboard = () => {
   const confirmDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       deleteAppointment(id);
-      if (editingId === id) cancelEditing(); // Close edit form if deleting currently edited appointment
+      if (editingId === id) cancelEditing();
     }
   };
 
@@ -146,8 +153,6 @@ const Dashboard = () => {
     }
     return 'User';
   };
-
-  
 
   // Get appointments of specific date
   const getAppointmentsByDate = (date) => {
@@ -165,7 +170,7 @@ const Dashboard = () => {
     });
   };
 
-  // mark dates with appointments
+  // Mark dates with appointments
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       const hasAppt = appointments.some(appt => {
@@ -180,16 +185,16 @@ const Dashboard = () => {
     }
   };
 
-
-
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <header className="flex justify-between items-center mb-8">
+      <header className="flex justify-between items-center mb-8 flex-wrap gap-4">
         <h1 className="text-3xl font-bold text-gray-800">Welcome, {getUserName()}!</h1>
         
+        <div className="bg-green-100 text-green-800 px-4 py-2 rounded shadow font-semibold">
+          Total Revenue: {formattedRevenue}
+        </div>
       </header>
 
-    
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Appointments Calendar</h2>
         <div className="flex flex-col md:flex-row gap-8">
@@ -226,7 +231,6 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      
 
       {/* Treatment completed Patients Section */}
       <section className="mb-8">
@@ -419,7 +423,7 @@ const Dashboard = () => {
         )}
       </section>
 
-      {/*  Today's & Upcoming  Appointments */}
+      {/* Upcoming & Today's Appointments */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Upcoming & Today's Appointments</h2>
         {filteredAppointments.length === 0 ? (
