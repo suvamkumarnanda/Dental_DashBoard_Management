@@ -37,9 +37,11 @@ React (functional components)
 ### Execution
 - Execute the app by running the command "**npm run dev**".
 ### For login
-- ADMIN LOGIN: email: 'admin@entnt.in',
+- ADMIN LOGIN:
+        username: 'admin@entnt.in',
         password: 'Admin@123',
-- USER LOGIN : email: 'patient1@entnt.in',
+- USER LOGIN :
+    username: 'patient1@entnt.in',
     password: 'Patient@123'
    
 ## Github repo link
